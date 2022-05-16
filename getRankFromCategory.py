@@ -45,7 +45,12 @@ def lambda_handler(event, context):
     #avendo messeo volutamente come primo elemento la posizione in classifica, posso usare semplicemente sort
     classificaFinaleOrdinata=classificaFinale.sort()
 
+    #se voglio ritornare json
+    #body = json.dumps(classificaFinaleOrdinata)
+
     return{
         'code': 200,
         'body': classificaFinaleOrdinata
+        #se voglio ritornare jason
+        #'body'=body
     }
