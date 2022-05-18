@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
 
+import 'package:app_base_orienteering/Managers/DownloadManager.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
@@ -16,25 +17,16 @@ class AllRaces extends StatefulWidget {
 
 class _AllRacesState extends State<AllRaces> {
   late Future<List<Map<String, dynamic>>> futureRaces;
+  var downloadManager = DownloadManager.getShared();
 
   @override
   void initState() {
     super.initState();
-    assingRaces();
+    fetchRaces();
   }
 
-  assingRaces() async {
-    futureRaces = fetchRaces();
-  }
-
-  Future<List<Map<String, dynamic>>> fetchRaces() async {
-    final response = await http.get(Uri.parse("$apiUrl/list_races"));
-
-    if (response.statusCode == 200) {
-      return List<Map<String, dynamic>>.from(jsonDecode(response.body));
-    } else {
-      throw Exception('Failed to load races.\nMaybe no races are planned yet');
-    }
+  void fetchRaces() async {
+    futureRaces = downloadManager.fetchRaces();
   }
 
   @override
@@ -89,7 +81,7 @@ class _AllRacesState extends State<AllRaces> {
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () {
           setState(() {
-            assingRaces();
+            fetchRaces();
           });
         },
         label: const Text('Refresh'),

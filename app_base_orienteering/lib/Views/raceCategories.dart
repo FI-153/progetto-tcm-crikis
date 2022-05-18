@@ -1,22 +1,6 @@
 import 'dart:async';
-import 'dart:convert';
-
+import 'package:app_base_orienteering/Managers/DownloadManager.dart';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
-
-import '../Utilities/globals.dart';
-
-Future<List<String>> fetchClasses(String raceid) async {
-  final response =
-      await http.get(Uri.parse('$apiUrl/list_classes?race_id=$raceid'));
-
-  if (response.statusCode == 200) {
-    return List<String>.from(jsonDecode(response.body));
-  } else {
-    throw Exception(
-        'Failed to load classes.\nMaybe the results still have to be loaded\nTry again later');
-  }
-}
 
 class ClassesRoute extends StatefulWidget {
   final String raceid;
@@ -29,10 +13,16 @@ class ClassesRoute extends StatefulWidget {
 class _ClassesRouteState extends State<ClassesRoute> {
   late Future<List<String>> futureClasses;
 
+  var downloadManager = DownloadManager.getShared();
+
   @override
   void initState() {
     super.initState();
-    futureClasses = fetchClasses(widget.raceid);
+    fetchClasses(widget.raceid);
+  }
+
+  void fetchClasses(String raceid) {
+    futureClasses = downloadManager.fetchClasses(raceid);
   }
 
   @override
