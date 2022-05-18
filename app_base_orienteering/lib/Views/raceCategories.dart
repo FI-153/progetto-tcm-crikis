@@ -13,7 +13,7 @@ class ClassesRoute extends StatefulWidget {
 class _ClassesRouteState extends State<ClassesRoute> {
   late Future<List<String>> futureClasses;
 
-  var downloadManager = DownloadManager.getShared();
+  var downloadManager = DownloadManager.getShared;
 
   @override
   void initState() {

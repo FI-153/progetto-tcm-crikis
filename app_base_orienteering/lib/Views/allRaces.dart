@@ -17,7 +17,7 @@ class AllRaces extends StatefulWidget {
 
 class _AllRacesState extends State<AllRaces> {
   late Future<List<Map<String, dynamic>>> futureRaces;
-  var downloadManager = DownloadManager.getShared();
+  var downloadManager = DownloadManager.getShared;
 
   @override
   void initState() {

@@ -3,13 +3,15 @@ import 'dart:convert';
 import '../Utilities/globals.dart';
 
 class DownloadManager {
-  static DownloadManager shared = DownloadManager();
+  DownloadManager._privateConstructor();
+
+  ///The shared instance of the DownloadManager
+  static final DownloadManager _shared = DownloadManager._privateConstructor();
 
   ///Gets the shared instance of the DownloadManager
-  static DownloadManager getShared() {
-    return shared;
-  }
+  static DownloadManager get getShared => _shared;
 
+  ///Fetches all the races
   Future<List<Map<String, dynamic>>> fetchRaces() async {
     final response = await http.get(Uri.parse("$apiUrl/list_races"));
 
@@ -20,6 +22,7 @@ class DownloadManager {
     }
   }
 
+  ///Fetched all the classes ralative to a race
   Future<List<String>> fetchClasses(String raceid) async {
     final response =
         await http.get(Uri.parse('$apiUrl/list_classes?race_id=$raceid'));
