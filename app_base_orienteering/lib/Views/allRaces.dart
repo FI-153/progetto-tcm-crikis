@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 import '../Utilities/globals.dart';
-import './raceCategories.dart';
+import 'RaceCategories.dart';
 
 class AllRaces extends StatefulWidget {
   const AllRaces({Key? key}) : super(key: key);
