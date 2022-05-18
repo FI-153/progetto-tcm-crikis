@@ -1,4 +1,4 @@
-import 'dart:async';
+import 'package:app_base_orienteering/Views/allRaces.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -16,22 +16,38 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  late Future<List<Map<String, dynamic>>> futureRaces;
+  ///Contains a list of all the top-level pages
+  List<Widget> pages = [const AllRaces(), const Text("Favorites")];
+
+  ///Current selected index
+  int _selectedIndex = 0;
 
   @override
   void initState() {
     super.initState();
   }
 
+  ///When an item is tapped in the bottomNavigationBar its index is selected
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Available races'),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Center(child: Text('Home')),
+      body: Center(child: pages[_selectedIndex]),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const [
+          BottomNavigationBarItem(
+              icon: Icon(Icons.list), label: 'Available Races'),
+          // icon: Icon(Icons.event), label: 'Available Races'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.star), label: 'Favorite Races'),
+        ],
+        currentIndex: _selectedIndex,
+        onTap: _onItemTapped,
       ),
     );
   }
