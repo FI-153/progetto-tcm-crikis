@@ -72,7 +72,7 @@ class _MyAppState extends State<MyApp> {
                               context,
                               MaterialPageRoute(
                                 builder: (context) =>
-                                    ClassesRoute(classes[index]["id"]),
+                                    ClassesRoute(classes[index]["race_name"]),
                               ),
                             );
                           },
