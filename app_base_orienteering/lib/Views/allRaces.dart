@@ -1,11 +1,6 @@
 import 'dart:async';
-import 'dart:convert';
-
 import 'package:app_base_orienteering/Managers/DownloadManager.dart';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
-
-import '../Utilities/globals.dart';
 import 'RaceCategories.dart';
 
 class AllRaces extends StatefulWidget {
@@ -16,7 +11,9 @@ class AllRaces extends StatefulWidget {
 }
 
 class _AllRacesState extends State<AllRaces> {
+  ///Stores the races once downloaded
   late Future<List<Map<String, dynamic>>> futureRaces;
+
   var downloadManager = DownloadManager.getShared;
 
   @override

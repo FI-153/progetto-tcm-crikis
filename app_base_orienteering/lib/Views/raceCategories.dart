@@ -11,6 +11,7 @@ class ClassesRoute extends StatefulWidget {
 }
 
 class _ClassesRouteState extends State<ClassesRoute> {
+  ///Stores the classes once downloaded
   late Future<List<String>> futureClasses;
 
   var downloadManager = DownloadManager.getShared;
@@ -21,7 +22,7 @@ class _ClassesRouteState extends State<ClassesRoute> {
     fetchClasses(widget.raceid);
   }
 
-  void fetchClasses(String raceid) {
+  void fetchClasses(String raceid) async {
     futureClasses = downloadManager.fetchClasses(raceid);
   }
 
