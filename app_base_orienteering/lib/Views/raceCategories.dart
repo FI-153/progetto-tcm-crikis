@@ -4,7 +4,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
-import './globals.dart';
+import '../Utilities/globals.dart';
 
 Future<List<String>> fetchClasses(String raceid) async {
   final response =
@@ -48,10 +48,31 @@ class _ClassesRouteState extends State<ClassesRoute> {
             future: futureClasses,
             builder: (context, snapshot) {
               if (snapshot.hasData) {
-                List<String> classes = snapshot.data!;
+                List<String> categories = snapshot.data!;
+
                 return ListView.builder(
-                    itemCount: classes.length,
-                    itemBuilder: ((context, index) => Text(classes[index])));
+                  itemCount: categories.length,
+                  itemBuilder: ((context, index) => Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: ElevatedButton(
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const Text("hi"),
+                              ),
+                            );
+                          },
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(
+                              categories[index],
+                              textScaleFactor: 1.4,
+                            ),
+                          ),
+                        ),
+                      )),
+                );
               } else if (snapshot.hasError) {
                 return Text('${snapshot.error}');
               }
