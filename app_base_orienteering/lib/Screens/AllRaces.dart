@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:app_base_orienteering/Managers/DownloadManager.dart';
+import 'package:app_base_orienteering/Views/Cell.dart';
 import 'package:flutter/material.dart';
 import 'RaceCategories.dart';
 
@@ -55,12 +56,12 @@ class _AllRacesState extends State<AllRaces> {
                               ),
                             );
                           },
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Text(
-                              races[index]["race_name"],
-                              textScaleFactor: 1.4,
-                            ),
+                          style: ElevatedButton.styleFrom(
+                            primary: Colors.white,
+                          ),
+                          child: Cell(
+                            races[index]["race_name"],
+                            races[index]["race_data"],
                           ),
                         ),
                       )),

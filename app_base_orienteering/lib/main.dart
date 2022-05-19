@@ -3,10 +3,12 @@ import 'package:flutter/material.dart';
 import './Views/Cell.dart';
 
 void main() {
-  runApp(MaterialApp(
-    title: 'Ori Live Results',
-    home: MyApp(),
-  ));
+  runApp(
+    const MaterialApp(
+      title: 'Ori Live Results',
+      home: MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatefulWidget {
