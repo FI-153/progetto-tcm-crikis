@@ -1,8 +1,9 @@
-import 'package:app_base_orienteering/Views/allRaces.dart';
+import 'package:app_base_orienteering/Screens/allRaces.dart';
 import 'package:flutter/material.dart';
+import './Views/Cell.dart';
 
 void main() {
-  runApp(const MaterialApp(
+  runApp(MaterialApp(
     title: 'Ori Live Results',
     home: MyApp(),
   ));
@@ -42,7 +43,6 @@ class _MyAppState extends State<MyApp> {
         items: const [
           BottomNavigationBarItem(
               icon: Icon(Icons.list), label: 'Available Races'),
-          // icon: Icon(Icons.event), label: 'Available Races'),
           BottomNavigationBarItem(
               icon: Icon(Icons.star), label: 'Favorite Races'),
         ],
