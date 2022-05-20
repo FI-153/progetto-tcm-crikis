@@ -33,6 +33,16 @@ class _ClassRankingState extends State<ClassRanking> {
       appBar: AppBar(
         title: Text(widget.displayedClass),
       ),
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: () {
+          setState(() {
+            fetchRanking(widget.raceid, widget.displayedClass);
+          });
+        },
+        label: const Text('Refresh Ranking'),
+        icon: const Icon(Icons.replay),
+        backgroundColor: Colors.blueAccent,
+      ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Center(

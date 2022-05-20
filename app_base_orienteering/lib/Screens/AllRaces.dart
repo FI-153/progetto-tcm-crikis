@@ -82,7 +82,7 @@ class _AllRacesState extends State<AllRaces> {
             fetchRaces();
           });
         },
-        label: const Text('Refresh'),
+        label: const Text('Refresh Races'),
         icon: const Icon(Icons.replay),
         backgroundColor: Colors.blueAccent,
       ),
