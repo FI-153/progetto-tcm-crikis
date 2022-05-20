@@ -1,3 +1,4 @@
+import 'package:app_base_orienteering/Managers/FavoritesManager.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import '../Utilities/globals.dart';
@@ -14,6 +15,21 @@ class DownloadManager {
   ///Fetches all the races
   Future<List<Map<String, dynamic>>> fetchRaces() async {
     final response = await http.get(Uri.parse("$apiUrl/list_races"));
+
+    if (response.statusCode == 200) {
+      return List<Map<String, dynamic>>.from(jsonDecode(response.body));
+    } else {
+      throw Exception('Failed to load races.');
+    }
+  }
+
+  FavoritesManager favoritesManager = FavoritesManager.getShared;
+
+  Future<List<Map<String, dynamic>>> fetchFavoriteRaces() async {
+    String favorites = favoritesManager.getArrayOfFavoriteRaces();
+
+    final response = await http
+        .get(Uri.parse("$apiUrl/ranking_from_id_race?race_id=$favorites"));
 
     if (response.statusCode == 200) {
       return List<Map<String, dynamic>>.from(jsonDecode(response.body));
