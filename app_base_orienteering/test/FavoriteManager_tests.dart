@@ -28,4 +28,9 @@ void main() {
   testWidgets('The id is contained in favorites', (WidgetTester tester) async {
     expect(true, favoritesManager.isFavorite('id2'));
   });
+
+  testWidgets('The id is not contained in favorites',
+      (WidgetTester tester) async {
+    expect(false, favoritesManager.isFavorite('id1'));
+  });
 }

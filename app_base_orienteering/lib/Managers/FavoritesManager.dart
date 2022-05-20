@@ -31,12 +31,6 @@ class FavoritesManager {
 
   ///Returns if a given string is favorite
   bool isFavorite(String id) {
-    for (String race in favoriteRaces) {
-      if (race == (id += ',')) {
-        return true;
-      }
-    }
-
-    return false;
+    return favoriteRaces.contains(id += ',');
   }
 }
