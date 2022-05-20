@@ -2,7 +2,7 @@ import 'dart:async';
 import 'package:app_base_orienteering/Managers/DownloadManager.dart';
 import 'package:app_base_orienteering/Views/Cell.dart';
 import 'package:flutter/material.dart';
-import 'RaceCategories.dart';
+import 'Classes.dart';
 
 class AllRaces extends StatefulWidget {
   const AllRaces({Key? key}) : super(key: key);

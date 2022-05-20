@@ -33,4 +33,17 @@ class DownloadManager {
       throw Exception('Failed to load classes.');
     }
   }
+
+  ///Fetched all the rankings ralative to a class
+  Future<List<dynamic>> fetchRankings(
+      String raceid, String displayedClass) async {
+    final response = await http.get(
+        Uri.parse('$apiUrl/results?race_id=$raceid&className=$displayedClass'));
+
+    if (response.statusCode == 200) {
+      return List<dynamic>.from(jsonDecode(response.body));
+    } else {
+      throw Exception('Failed to load rankings.');
+    }
+  }
 }

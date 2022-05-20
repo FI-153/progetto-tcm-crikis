@@ -1,63 +1,56 @@
-import 'dart:async';
-import 'package:app_base_orienteering/Managers/DownloadManager.dart';
 import 'package:flutter/material.dart';
+import '../Managers/DownloadManager.dart';
 
-class ClassesRoute extends StatefulWidget {
+class ClassRanking extends StatefulWidget {
+  const ClassRanking(this.raceid, this.displayedClass, {Key? key})
+      : super(key: key);
   final String raceid;
-  const ClassesRoute(this.raceid, {Key? key}) : super(key: key);
+  final String displayedClass;
 
   @override
-  _ClassesRouteState createState() => _ClassesRouteState();
+  State<ClassRanking> createState() => _ClassRankingState();
 }
 
-class _ClassesRouteState extends State<ClassesRoute> {
-  ///Stores the classes once downloaded
-  late Future<List<String>> futureClasses;
+class _ClassRankingState extends State<ClassRanking> {
+  late Future<List<dynamic>> futureClassRanks;
 
   var downloadManager = DownloadManager.getShared;
 
   @override
   void initState() {
     super.initState();
-    fetchClasses(widget.raceid);
+    fetchRanking(widget.raceid, widget.displayedClass);
   }
 
-  void fetchClasses(String raceid) async {
-    futureClasses = downloadManager.fetchClasses(raceid);
+  void fetchRanking(String raceid, String displayedClass) async {
+    futureClassRanks = downloadManager.fetchRankings(raceid, displayedClass);
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Classes'),
+        title: Text(widget.displayedClass),
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Center(
-          child: FutureBuilder<List<String>>(
-            future: futureClasses,
+          child: FutureBuilder<List<dynamic>>(
+            future: futureClassRanks,
             builder: (context, snapshot) {
               if (snapshot.hasData) {
-                List<String> categories = snapshot.data!;
+                List<dynamic> downloadedRanks = snapshot.data!;
 
                 return ListView.builder(
-                  itemCount: categories.length,
+                  itemCount: downloadedRanks.length,
                   itemBuilder: ((context, index) => Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: ElevatedButton(
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => const Text("hi"),
-                              ),
-                            );
-                          },
+                          onPressed: () {},
                           child: Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: Text(
-                              categories[index],
+                              '${downloadedRanks[index]['position']}, ${downloadedRanks[index]['name']}',
                               textScaleFactor: 1.4,
                             ),
                           ),
