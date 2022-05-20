@@ -4,14 +4,14 @@ import 'package:app_base_orienteering/Views/RaceCell.dart';
 import 'package:flutter/material.dart';
 import 'Classes.dart';
 
-class AllRaces extends StatefulWidget {
-  AllRaces({Key? key}) : super(key: key);
+class FavoriteRaces extends StatefulWidget {
+  FavoriteRaces({Key? key}) : super(key: key);
 
   @override
-  _AllRacesState createState() => _AllRacesState();
+  _FavoriteRacesState createState() => _FavoriteRacesState();
 }
 
-class _AllRacesState extends State<AllRaces> {
+class _FavoriteRacesState extends State<FavoriteRaces> {
   ///Stores the races once downloaded
   late Future<List<Map<String, dynamic>>> futureRaces;
 
@@ -20,18 +20,18 @@ class _AllRacesState extends State<AllRaces> {
   @override
   void initState() {
     super.initState();
-    fetchallRaces();
+    fetchFavoriteRaces();
   }
 
-  void fetchallRaces() async {
-    futureRaces = downloadManager.fetchRaces();
+  void fetchFavoriteRaces() async {
+    futureRaces = downloadManager.fetchFavoriteRaces();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Available Races'),
+        title: const Text('Favorite Races'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -79,7 +79,7 @@ class _AllRacesState extends State<AllRaces> {
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () {
           setState(() {
-            fetchallRaces();
+            fetchFavoriteRaces();
           });
         },
         label: const Text('Refresh Races'),

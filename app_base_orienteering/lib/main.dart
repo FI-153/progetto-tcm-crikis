@@ -1,4 +1,5 @@
 import 'package:app_base_orienteering/Screens/AllRaces.dart';
+import 'package:app_base_orienteering/Screens/FavoriteRaces.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -19,7 +20,10 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   ///Contains a list of all the top-level pages
-  List<Widget> pages = [AllRaces(false), AllRaces(true)];
+  List<Widget> pages = [
+    AllRaces(),
+    FavoriteRaces(),
+  ];
 
   ///Current selected index
   int _selectedIndex = 0;
