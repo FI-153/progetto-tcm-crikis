@@ -5,7 +5,8 @@ import 'package:flutter/material.dart';
 import 'Classes.dart';
 
 class AllRaces extends StatefulWidget {
-  const AllRaces({Key? key}) : super(key: key);
+  bool isDisplayingFavorites;
+  AllRaces(this.isDisplayingFavorites, {Key? key}) : super(key: key);
 
   @override
   _AllRacesState createState() => _AllRacesState();
@@ -20,12 +21,18 @@ class _AllRacesState extends State<AllRaces> {
   @override
   void initState() {
     super.initState();
-    fetchRaces();
+    if (widget.isDisplayingFavorites) {
+      fetchFavoriteRaces();
+    } else {
+      fetchallRaces();
+    }
   }
 
-  void fetchRaces() async {
+  void fetchallRaces() async {
     futureRaces = downloadManager.fetchRaces();
   }
+
+  void fetchFavoriteRaces() async {}
 
   @override
   Widget build(BuildContext context) {
@@ -79,7 +86,7 @@ class _AllRacesState extends State<AllRaces> {
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () {
           setState(() {
-            fetchRaces();
+            fetchallRaces();
           });
         },
         label: const Text('Refresh Races'),

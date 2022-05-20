@@ -35,7 +35,7 @@ class _RankCellState extends State<RankCell> {
                       AthletePosition(widget: widget),
                     ],
                   ),
-                  Divider(),
+                  PaleDivider(),
                 ],
               ),
             ),
@@ -46,8 +46,8 @@ class _RankCellState extends State<RankCell> {
   }
 }
 
-class Divider extends StatelessWidget {
-  const Divider({
+class PaleDivider extends StatelessWidget {
+  const PaleDivider({
     Key? key,
   }) : super(key: key);
 
