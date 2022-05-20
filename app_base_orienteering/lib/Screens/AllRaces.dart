@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'package:app_base_orienteering/Managers/DownloadManager.dart';
-import 'package:app_base_orienteering/Views/Cell.dart';
+import 'package:app_base_orienteering/Views/RaceCell.dart';
 import 'package:flutter/material.dart';
 import 'Classes.dart';
 
@@ -59,7 +59,7 @@ class _AllRacesState extends State<AllRaces> {
                           style: ElevatedButton.styleFrom(
                             primary: Colors.white,
                           ),
-                          child: Cell(
+                          child: RaceCell(
                             races[index]["race_name"],
                             races[index]["race_data"],
                           ),

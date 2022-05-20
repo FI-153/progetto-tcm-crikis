@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 
-class Cell extends StatefulWidget {
+class RaceCell extends StatefulWidget {
   String raceName;
   String raceDate;
-  Cell(this.raceName, this.raceDate, {Key? key}) : super(key: key);
+  RaceCell(this.raceName, this.raceDate, {Key? key}) : super(key: key);
 
   @override
-  State<Cell> createState() => _CellState();
+  State<RaceCell> createState() => _RaceCellState();
 }
 
-class _CellState extends State<Cell> {
+class _RaceCellState extends State<RaceCell> {
   @override
   Widget build(BuildContext context) {
     return Padding(
