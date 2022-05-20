@@ -27,39 +27,92 @@ class _RankCellState extends State<RankCell> {
                     children: [
                       Column(
                         children: [
-                          Text(
-                            widget.name,
-                            style: const TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.w500,
-                              color: Colors.black,
-                            ),
-                          ),
-                          Text(
-                            widget.surname,
-                            style: const TextStyle(
-                              fontSize: 15,
-                              fontStyle: FontStyle.italic,
-                              color: Color.fromARGB(128, 0, 0, 0),
-                            ),
-                          ),
+                          AthleteName(widget: widget),
+                          AthleteSurname(widget: widget),
                         ],
                       ),
                       const Spacer(),
-                      Text(
-                        widget.position == "Not arrived" ? '' : widget.position,
-                        style: const TextStyle(fontSize: 30),
-                      ),
+                      AthletePosition(widget: widget),
                     ],
                   ),
-                  const Divider(
-                    color: Color.fromARGB(127, 0, 0, 0),
-                  ),
+                  Divider(),
                 ],
               ),
             ),
           ),
         ),
+      ),
+    );
+  }
+}
+
+class Divider extends StatelessWidget {
+  const Divider({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return const Divider(
+      color: Color.fromARGB(127, 0, 0, 0),
+    );
+  }
+}
+
+class AthletePosition extends StatelessWidget {
+  const AthletePosition({
+    Key? key,
+    required this.widget,
+  }) : super(key: key);
+
+  final RankCell widget;
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      widget.position == "Not arrived" ? '' : '${widget.position}°',
+      style: const TextStyle(fontSize: 30),
+    );
+  }
+}
+
+class AthleteSurname extends StatelessWidget {
+  const AthleteSurname({
+    Key? key,
+    required this.widget,
+  }) : super(key: key);
+
+  final RankCell widget;
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      widget.surname,
+      style: const TextStyle(
+        fontSize: 15,
+        fontStyle: FontStyle.italic,
+        color: Color.fromARGB(128, 0, 0, 0),
+      ),
+    );
+  }
+}
+
+class AthleteName extends StatelessWidget {
+  const AthleteName({
+    Key? key,
+    required this.widget,
+  }) : super(key: key);
+
+  final RankCell widget;
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      "${widget.name} ",
+      style: const TextStyle(
+        fontSize: 20,
+        fontWeight: FontWeight.w500,
+        color: Colors.black,
       ),
     );
   }
