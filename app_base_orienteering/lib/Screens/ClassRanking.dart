@@ -1,3 +1,4 @@
+import 'package:app_base_orienteering/Views/RankCell.dart';
 import 'package:flutter/material.dart';
 import '../Managers/DownloadManager.dart';
 
@@ -43,18 +44,10 @@ class _ClassRankingState extends State<ClassRanking> {
 
                 return ListView.builder(
                   itemCount: downloadedRanks.length,
-                  itemBuilder: ((context, index) => Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: ElevatedButton(
-                          onPressed: () {},
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Text(
-                              '${downloadedRanks[index]['position']}, ${downloadedRanks[index]['name']}',
-                              textScaleFactor: 1.4,
-                            ),
-                          ),
-                        ),
+                  itemBuilder: ((context, index) => RankCell(
+                        downloadedRanks[index]['position'],
+                        downloadedRanks[index]['name'],
+                        downloadedRanks[index]['surname'],
                       )),
                 );
               } else if (snapshot.hasError) {

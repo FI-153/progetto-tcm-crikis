@@ -1,6 +1,5 @@
 import 'package:app_base_orienteering/Screens/allRaces.dart';
 import 'package:flutter/material.dart';
-import 'Views/RaceCell.dart';
 
 void main() {
   runApp(
