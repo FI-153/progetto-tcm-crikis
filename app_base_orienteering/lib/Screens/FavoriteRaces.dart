@@ -62,6 +62,7 @@ class _FavoriteRacesState extends State<FavoriteRaces> {
                           child: RaceCell(
                             races[index]["race_name"],
                             races[index]["race_data"],
+                            races[index]["race_id"],
                           ),
                         ),
                       )),
