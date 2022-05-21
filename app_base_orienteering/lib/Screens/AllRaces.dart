@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:focused_menu/modals.dart';
 import 'Classes.dart';
 import 'package:focused_menu/focused_menu.dart';
+import '../Utilities/costum_icons_icons.dart';
 
 class AllRaces extends StatefulWidget {
   AllRaces({Key? key}) : super(key: key);
@@ -68,8 +69,7 @@ class _AllRacesState extends State<AllRaces> {
                                 "Show Starting List",
                                 style: TextStyle(fontWeight: FontWeight.w600),
                               ),
-                              trailingIcon:
-                                  const Icon(Icons.emoji_flags_rounded),
+                              trailingIcon: const Icon(CostumIcons.flag),
                               onPressed: () {},
                             ),
                             FocusedMenuItem(
@@ -77,6 +77,7 @@ class _AllRacesState extends State<AllRaces> {
                                 "Show Rankings By Club",
                                 style: TextStyle(fontWeight: FontWeight.w600),
                               ),
+                              trailingIcon: const Icon(CostumIcons.podium),
                               onPressed: () {},
                             ),
                           ],
