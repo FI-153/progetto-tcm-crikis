@@ -17,38 +17,43 @@ class _RaceCellState extends State<RaceCell> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(0),
-      child: Center(
-        child: SizedBox(
-          child: Padding(
-            padding: const EdgeInsets.fromLTRB(15, 10, 15, 0),
-            child: Center(
-              child: Column(
+    return DecoratedBox(
+      decoration: const BoxDecoration(
+        borderRadius: BorderRadius.all(Radius.circular(10)),
+        color: Colors.white,
+        boxShadow: [
+          BoxShadow(
+            blurRadius: 15,
+            color: Colors.black26,
+          ),
+        ],
+      ),
+      child: Padding(
+        padding: const EdgeInsets.fromLTRB(15, 10, 15, 0),
+        child: Center(
+          child: Column(
+            children: [
+              Row(
                 children: [
-                  Row(
+                  Column(
                     children: [
-                      Column(
-                        children: [
-                          RaceName(widget: widget),
-                          RaceDate(widget: widget),
-                        ],
-                      ),
-                      const Spacer(),
-                      IconButton(
-                        onPressed: () {
-                          changeFavoriteStatus(widget.raceId);
-                        },
-                        icon: getIcon(),
-                        color: Colors.amber,
-                        iconSize: 45,
-                      ),
+                      RaceName(widget: widget),
+                      RaceDate(widget: widget),
                     ],
                   ),
-                  const InvisibleDivider(),
+                  const Spacer(),
+                  IconButton(
+                    onPressed: () {
+                      changeFavoriteStatus(widget.raceId);
+                    },
+                    icon: getIcon(),
+                    color: Colors.amber,
+                    iconSize: 45,
+                  ),
                 ],
               ),
-            ),
+              const InvisibleDivider(),
+            ],
           ),
         ),
       ),

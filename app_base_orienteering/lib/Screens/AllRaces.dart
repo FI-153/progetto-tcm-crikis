@@ -36,68 +36,48 @@ class _AllRacesState extends State<AllRaces> {
       appBar: AppBar(
         title: const Text('Available Races'),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Center(
-          child: FutureBuilder<List<Map<String, dynamic>>>(
-            future: futureRaces,
-            builder: (context, snapshot) {
-              if (snapshot.hasData) {
-                var races = snapshot.data!; //force unwrapping after a check
+      body: FutureBuilder<List<Map<String, dynamic>>>(
+        future: futureRaces,
+        builder: (context, snapshot) {
+          if (snapshot.hasError) {
+            return Text('${snapshot.error}');
+          }
 
-                return ListView.builder(
-                  physics: const BouncingScrollPhysics(),
-                  itemCount: races.length,
-                  itemBuilder: ((context, index) => Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: FocusedMenuHolder(
-                          duration: const Duration(milliseconds: 100),
-                          animateMenuItems: false,
-                          menuWidth: MediaQuery.of(context).size.width * 0.75,
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) =>
-                                    ClassesRoute(races[index]["race_name"]),
-                              ),
-                            );
-                          },
-                          menuItems: <FocusedMenuItem>[
-                            FocusedMenuItem(
-                              title: const Text(
-                                "Show Starting List",
-                                style: TextStyle(fontWeight: FontWeight.w600),
-                              ),
-                              trailingIcon: const Icon(CostumIcons.flag),
-                              onPressed: () {},
-                            ),
-                            FocusedMenuItem(
-                              title: const Text(
-                                "Show Rankings By Club",
-                                style: TextStyle(fontWeight: FontWeight.w600),
-                              ),
-                              trailingIcon: const Icon(CostumIcons.podium),
-                              onPressed: () {},
-                            ),
-                          ],
-                          child: RaceCell(
-                            races[index]["race_name"],
-                            races[index]["race_data"],
-                            races[index]["race_id"],
-                          ),
-                        ),
-                      )),
-                );
-              } else if (snapshot.hasError) {
-                return Text('${snapshot.error}');
-              }
+          if (snapshot.hasData) {
+            var races = snapshot.data!; //force unwrapping after a check
 
-              // By default, show a loading spinner.
-              return const CircularProgressIndicator();
-            },
-          ),
-        ),
+            return ListView.builder(
+              physics: const BouncingScrollPhysics(),
+              itemCount: races.length,
+              itemBuilder: ((context, index) => Padding(
+                    padding: const EdgeInsets.all(8),
+                    child: FocusedMenuHolder(
+                      duration: const Duration(milliseconds: 100),
+                      menuWidth: MediaQuery.of(context).size.width * 0.75,
+                      menuOffset: 8,
+                      blurBackgroundColor:
+                          const Color.fromRGBO(204, 204, 204, 0.1),
+                      blurSize: 2,
+                      onPressed: () {
+                        goToRaceClasses(context, races, index);
+                      },
+                      menuItems: <FocusedMenuItem>[
+                        showStartingList(),
+                        showRankingsByClub(),
+                      ],
+                      child: RaceCell(
+                        races[index]["race_name"],
+                        races[index]["race_data"],
+                        races[index]["race_id"],
+                      ),
+                    ),
+                  )),
+            );
+          }
+
+          // By default, show a loading spinner.
+          return const CircularProgressIndicator();
+        },
       ),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () {
@@ -108,6 +88,48 @@ class _AllRacesState extends State<AllRaces> {
         label: const Text('Refresh Races'),
         icon: const Icon(Icons.replay),
         backgroundColor: Colors.blueAccent,
+      ),
+    );
+  }
+
+  FocusedMenuItem showRankingsByClub() {
+    return FocusedMenuItem(
+      title: const Text(
+        "Show Rankings by Club",
+        style: TextStyle(fontWeight: FontWeight.w600),
+      ),
+      trailingIcon: const Icon(CostumIcons.podium),
+      onPressed: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const Text('Rank')),
+        );
+      },
+    );
+  }
+
+  FocusedMenuItem showStartingList() {
+    return FocusedMenuItem(
+      title: const Text(
+        "Show Starting List",
+        style: TextStyle(fontWeight: FontWeight.w600),
+      ),
+      trailingIcon: const Icon(CostumIcons.flag),
+      onPressed: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const Text('Starting')),
+        );
+      },
+    );
+  }
+
+  void goToRaceClasses(
+      BuildContext context, List<Map<String, dynamic>> races, int index) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => ClassesRoute(races[index]["race_name"]),
       ),
     );
   }
