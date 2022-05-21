@@ -2,7 +2,9 @@ import 'dart:async';
 import 'package:app_base_orienteering/Managers/DownloadManager.dart';
 import 'package:app_base_orienteering/Views/RaceCell.dart';
 import 'package:flutter/material.dart';
+import 'package:focused_menu/modals.dart';
 import 'Classes.dart';
+import 'package:focused_menu/focused_menu.dart';
 
 class AllRaces extends StatefulWidget {
   AllRaces({Key? key}) : super(key: key);
@@ -43,10 +45,14 @@ class _AllRacesState extends State<AllRaces> {
                 var races = snapshot.data!; //force unwrapping after a check
 
                 return ListView.builder(
+                  physics: const BouncingScrollPhysics(),
                   itemCount: races.length,
                   itemBuilder: ((context, index) => Padding(
                         padding: const EdgeInsets.all(8.0),
-                        child: ElevatedButton(
+                        child: FocusedMenuHolder(
+                          duration: const Duration(milliseconds: 100),
+                          animateMenuItems: false,
+                          menuWidth: MediaQuery.of(context).size.width * 0.75,
                           onPressed: () {
                             Navigator.push(
                               context,
@@ -56,9 +62,24 @@ class _AllRacesState extends State<AllRaces> {
                               ),
                             );
                           },
-                          style: ElevatedButton.styleFrom(
-                            primary: Colors.white,
-                          ),
+                          menuItems: <FocusedMenuItem>[
+                            FocusedMenuItem(
+                              title: const Text(
+                                "Show Starting List",
+                                style: TextStyle(fontWeight: FontWeight.w600),
+                              ),
+                              trailingIcon:
+                                  const Icon(Icons.emoji_flags_rounded),
+                              onPressed: () {},
+                            ),
+                            FocusedMenuItem(
+                              title: const Text(
+                                "Show Rankings By Club",
+                                style: TextStyle(fontWeight: FontWeight.w600),
+                              ),
+                              onPressed: () {},
+                            ),
+                          ],
                           child: RaceCell(
                             races[index]["race_name"],
                             races[index]["race_data"],

@@ -29,6 +29,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+    
+  focused_menu: ^1.0.5
 
 
   # The following adds the Cupertino Icons font to your application.
