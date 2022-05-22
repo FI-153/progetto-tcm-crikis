@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:app_base_orienteering/Managers/DownloadManager.dart';
+import 'package:app_base_orienteering/Screens/Clubs/ClubsRoute.dart';
 import 'package:app_base_orienteering/Views/RaceCell.dart';
 import 'package:flutter/material.dart';
 import 'package:focused_menu/modals.dart';
@@ -63,8 +64,17 @@ class _AllRacesState extends State<AllRaces> {
                           goToRaceClasses(context, races, index);
                         },
                         menuItems: <FocusedMenuItem>[
+                          FocusedMenuItem(
+                            title: const Text(
+                              "Show Rankings by Club",
+                              style: TextStyle(fontWeight: FontWeight.w600),
+                            ),
+                            trailingIcon: const Icon(CostumIcons.podium),
+                            onPressed: () {
+                              goToClubs(context, races, index);
+                            },
+                          ),
                           showStartingList(),
-                          showRankingsByClub(),
                         ],
                         child: RaceCell(
                           races[index]["race_name"],
@@ -94,19 +104,12 @@ class _AllRacesState extends State<AllRaces> {
     );
   }
 
-  FocusedMenuItem showRankingsByClub() {
-    return FocusedMenuItem(
-      title: const Text(
-        "Show Rankings by Club",
-        style: TextStyle(fontWeight: FontWeight.w600),
-      ),
-      trailingIcon: const Icon(CostumIcons.podium),
-      onPressed: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => const Text('Rank')),
-        );
-      },
+  void goToClubs(
+      BuildContext context, List<Map<String, dynamic>> races, int index) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+          builder: (context) => ClubsRoute(races[index]["race_id"])),
     );
   }
 
@@ -131,8 +134,7 @@ class _AllRacesState extends State<AllRaces> {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => ClassesRoute(races[index]["race_name"]),
-      ),
+          builder: (context) => ClassesRoute(races[index]["race_name"])),
     );
   }
 }

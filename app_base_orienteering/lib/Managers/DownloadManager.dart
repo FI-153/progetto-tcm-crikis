@@ -50,6 +50,18 @@ class DownloadManager {
     }
   }
 
+  ///Fetched all the classes ralative to a race
+  Future<List<String>> fetchClubs(String raceid) async {
+    final response =
+        await http.get(Uri.parse('$apiUrl/list_clubs?race_id=$raceid'));
+
+    if (response.statusCode == 200) {
+      return List<String>.from(jsonDecode(response.body));
+    } else {
+      throw Exception('Failed to load clubs.');
+    }
+  }
+
   ///Fetched all the rankings ralative to a class
   Future<List<dynamic>> fetchRankings(
       String raceid, String displayedClass) async {
