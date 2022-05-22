@@ -39,39 +39,39 @@ class _ClassesRouteState extends State<ClassesRoute> {
           child: FutureBuilder<List<String>>(
             future: futureClasses,
             builder: (context, snapshot) {
-              if (snapshot.hasData) {
-                List<String> downloadedClasses = snapshot.data!;
-
-                return ListView.builder(
-                  itemCount: downloadedClasses.length,
-                  itemBuilder: ((context, index) => Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: ElevatedButton(
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => ClassRanking(
-                                    widget.raceid, downloadedClasses[index]),
-                              ),
-                            );
-                          },
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Text(
-                              downloadedClasses[index],
-                              textScaleFactor: 1.4,
-                            ),
-                          ),
-                        ),
-                      )),
-                );
-              } else if (snapshot.hasError) {
+              if (snapshot.hasError) {
                 return Text('${snapshot.error}');
               }
 
-              // By default, show a loading spinner.
-              return const CircularProgressIndicator();
+              if (!snapshot.hasData) {
+                return const CircularProgressIndicator();
+              }
+
+              List<String> downloadedClasses = snapshot.data!;
+              return ListView.builder(
+                itemCount: downloadedClasses.length,
+                itemBuilder: ((context, index) => Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: ElevatedButton(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => ClassRanking(
+                                  widget.raceid, downloadedClasses[index]),
+                            ),
+                          );
+                        },
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                            downloadedClasses[index],
+                            textScaleFactor: 1.4,
+                          ),
+                        ),
+                      ),
+                    )),
+              );
             },
           ),
         ),

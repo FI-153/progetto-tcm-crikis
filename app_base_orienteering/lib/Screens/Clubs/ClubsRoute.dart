@@ -44,34 +44,35 @@ class _ClubsRouteState extends State<ClubsRoute> {
                 return Text('${snapshot.error}');
               }
 
-              if (snapshot.hasData) {
-                List<String> downloadedClasses = snapshot.data!;
+              if (!snapshot.hasData) {
+                return const CircularProgressIndicator();
+              }
 
-                return ListView.builder(
-                  itemCount: downloadedClasses.length,
-                  itemBuilder: ((context, index) => Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: ElevatedButton(
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => ClubsRanking(
-                                    widget.raceid, downloadedClasses[index]),
-                              ),
-                            );
-                          },
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Text(
-                              downloadedClasses[index],
-                              textScaleFactor: 1.4,
+              List<String> downloadedClasses = snapshot.data!;
+              return ListView.builder(
+                itemCount: downloadedClasses.length,
+                itemBuilder: ((context, index) => Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: ElevatedButton(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => ClubsRanking(
+                                  widget.raceid, downloadedClasses[index]),
                             ),
+                          );
+                        },
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                            downloadedClasses[index],
+                            textScaleFactor: 1.4,
                           ),
                         ),
-                      )),
-                );
-              }
+                      ),
+                    )),
+              );
 
               // By default, show a loading spinner.
               return const CircularProgressIndicator();
