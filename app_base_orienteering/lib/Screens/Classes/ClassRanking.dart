@@ -1,6 +1,6 @@
 import 'package:app_base_orienteering/Views/RankCell.dart';
 import 'package:flutter/material.dart';
-import '../Managers/DownloadManager.dart';
+import '../../Managers/DownloadManager.dart';
 
 class ClassRanking extends StatefulWidget {
   const ClassRanking(this.raceid, this.displayedClass, {Key? key})

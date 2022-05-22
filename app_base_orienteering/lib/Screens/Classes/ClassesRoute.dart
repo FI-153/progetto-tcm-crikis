@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'package:app_base_orienteering/Managers/DownloadManager.dart';
-import 'package:app_base_orienteering/Screens/ClassRanking.dart';
+import 'package:app_base_orienteering/Screens/Classes/ClassRanking.dart';
 import 'package:flutter/material.dart';
 
 class ClassesRoute extends StatefulWidget {

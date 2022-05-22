@@ -2,7 +2,7 @@ import 'dart:async';
 import 'package:app_base_orienteering/Managers/DownloadManager.dart';
 import 'package:app_base_orienteering/Views/RaceCell.dart';
 import 'package:flutter/material.dart';
-import 'Classes.dart';
+import 'Classes/ClassesRoute.dart';
 
 class FavoriteRaces extends StatefulWidget {
   FavoriteRaces({Key? key}) : super(key: key);
