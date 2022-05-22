@@ -53,7 +53,7 @@ class DownloadManager {
     if (response.statusCode == 200) {
       return List<String>.from(jsonDecode(response.body));
     } else {
-      throw Exception('Failed to load classes.');
+      return [];
     }
   }
 
@@ -65,7 +65,7 @@ class DownloadManager {
     if (response.statusCode == 200) {
       return List<String>.from(jsonDecode(response.body));
     } else {
-      throw Exception('Failed to load clubs.');
+      return [];
     }
   }
 

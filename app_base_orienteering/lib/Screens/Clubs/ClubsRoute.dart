@@ -49,6 +49,10 @@ class _ClubsRouteState extends State<ClubsRoute> {
               }
 
               List<String> downloadedClasses = snapshot.data!;
+              if (downloadedClasses.isEmpty) {
+                return Text('No data yet');
+              }
+
               return ListView.builder(
                 itemCount: downloadedClasses.length,
                 itemBuilder: ((context, index) => Padding(

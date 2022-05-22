@@ -48,6 +48,10 @@ class _ClassesRouteState extends State<ClassesRoute> {
               }
 
               List<String> downloadedClasses = snapshot.data!;
+              if (downloadedClasses.isEmpty) {
+                return Text('There is no data');
+              }
+
               return ListView.builder(
                 itemCount: downloadedClasses.length,
                 itemBuilder: ((context, index) => Padding(

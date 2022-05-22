@@ -62,6 +62,9 @@ class _ClassRankingState extends State<ClassRanking> {
               }
 
               List<dynamic> downloadedRanks = snapshot.data!;
+              if (downloadedRanks.isEmpty) {
+                return Text('No data yet');
+              }
 
               return ListView.builder(
                 itemCount: downloadedRanks.length,

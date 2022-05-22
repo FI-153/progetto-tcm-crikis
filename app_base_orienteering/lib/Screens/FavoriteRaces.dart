@@ -54,6 +54,9 @@ class _FavoriteRacesState extends State<FavoriteRaces> {
             }
 
             var races = snapshot.data!; //force unwrapping after a check
+            if (races.isEmpty) {
+              return Text("No favorites yet");
+            }
 
             return ListView.builder(
               physics: const BouncingScrollPhysics(),
