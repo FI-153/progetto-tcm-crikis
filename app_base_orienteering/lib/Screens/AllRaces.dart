@@ -45,49 +45,48 @@ class _AllRacesState extends State<AllRaces> {
               return Text('${snapshot.error}');
             }
 
-            if (snapshot.hasData) {
-              var races = snapshot.data!; //force unwrapping after a check
-
-              return ListView.builder(
-                physics: const BouncingScrollPhysics(),
-                itemCount: races.length,
-                itemBuilder: ((context, index) => Padding(
-                      padding: const EdgeInsets.all(8),
-                      child: FocusedMenuHolder(
-                        duration: const Duration(milliseconds: 100),
-                        menuWidth: MediaQuery.of(context).size.width * 0.75,
-                        menuOffset: 8,
-                        blurBackgroundColor:
-                            const Color.fromRGBO(204, 204, 204, 0.1),
-                        blurSize: 2,
-                        onPressed: () {
-                          goToRaceClasses(context, races, index);
-                        },
-                        menuItems: <FocusedMenuItem>[
-                          FocusedMenuItem(
-                            title: const Text(
-                              "Show Rankings by Club",
-                              style: TextStyle(fontWeight: FontWeight.w600),
-                            ),
-                            trailingIcon: const Icon(CostumIcons.podium),
-                            onPressed: () {
-                              goToClubs(context, races, index);
-                            },
-                          ),
-                          showStartingList(),
-                        ],
-                        child: RaceCell(
-                          races[index]["race_name"],
-                          races[index]["race_data"],
-                          races[index]["race_id"],
-                        ),
-                      ),
-                    )),
-              );
+            if (!snapshot.hasData) {
+              return const CircularProgressIndicator();
             }
 
-            // By default, show a loading spinner.
-            return const CircularProgressIndicator();
+            var races = snapshot.data!; //force unwrapping after a check
+
+            return ListView.builder(
+              physics: const BouncingScrollPhysics(),
+              itemCount: races.length,
+              itemBuilder: ((context, index) => Padding(
+                    padding: const EdgeInsets.all(8),
+                    child: FocusedMenuHolder(
+                      duration: const Duration(milliseconds: 100),
+                      menuWidth: MediaQuery.of(context).size.width * 0.75,
+                      menuOffset: 8,
+                      blurBackgroundColor:
+                          const Color.fromRGBO(204, 204, 204, 0.1),
+                      blurSize: 2,
+                      onPressed: () {
+                        goToRaceClasses(context, races, index);
+                      },
+                      menuItems: <FocusedMenuItem>[
+                        FocusedMenuItem(
+                          title: const Text(
+                            "Show Rankings by Club",
+                            style: TextStyle(fontWeight: FontWeight.w600),
+                          ),
+                          trailingIcon: const Icon(CostumIcons.podium),
+                          onPressed: () {
+                            goToClubs(context, races, index);
+                          },
+                        ),
+                        showStartingList(),
+                      ],
+                      child: RaceCell(
+                        races[index]["race_name"],
+                        races[index]["race_data"],
+                        races[index]["race_id"],
+                      ),
+                    ),
+                  )),
+            );
           },
         ),
       ),

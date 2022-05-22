@@ -1,3 +1,6 @@
+import 'dart:ffi';
+
+import 'package:app_base_orienteering/Utilities/costum_icons_icons.dart';
 import 'package:flutter/material.dart';
 
 class RankCell extends StatefulWidget {
@@ -24,24 +27,47 @@ class _RankCellState extends State<RankCell> {
               child: Column(
                 children: [
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          AthleteName(widget: widget),
+                          Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              AthleteName(widget: widget),
+                              showCrownWhenNeeded(widget.position)
+                            ],
+                          ),
                           AthleteSurname(widget: widget),
                         ],
                       ),
-                      const Spacer(),
                       AthletePosition(widget: widget),
                     ],
                   ),
-                  PaleDivider(),
+                  const PaleDivider(),
                 ],
               ),
             ),
           ),
         ),
       ),
+    );
+  }
+
+  Icon showCrownWhenNeeded(String position) {
+    if (position.contains("arrived")) {
+      return const Icon(Icons.abc, size: 0);
+    }
+
+    if (int.parse(position) < 1) {
+      return const Icon(Icons.abc, size: 0);
+    }
+
+    return const Icon(
+      CostumIcons.crown,
+      size: 10,
+      color: Colors.amber,
     );
   }
 }
@@ -70,7 +96,7 @@ class AthletePosition extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(
-      widget.position == "Not arrived" ? '' : '${widget.position}°',
+      widget.position.contains("arrived") ? 'n/a' : '${widget.position}°',
       style: const TextStyle(fontSize: 30),
     );
   }
@@ -89,7 +115,7 @@ class AthleteSurname extends StatelessWidget {
     return Text(
       widget.surname,
       style: const TextStyle(
-        fontSize: 15,
+        fontSize: 17,
         fontStyle: FontStyle.italic,
         color: Color.fromARGB(128, 0, 0, 0),
       ),

@@ -34,14 +34,15 @@ class _RaceCellState extends State<RaceCell> {
           child: Column(
             children: [
               Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       RaceName(widget: widget),
                       RaceDate(widget: widget),
                     ],
                   ),
-                  const Spacer(),
                   IconButton(
                     onPressed: () {
                       changeFavoriteStatus(widget.raceId);
@@ -103,7 +104,7 @@ class RaceDate extends StatelessWidget {
     return Text(
       widget.raceDate,
       style: const TextStyle(
-        fontSize: 15,
+        fontSize: 17,
         fontStyle: FontStyle.italic,
         color: Color.fromARGB(128, 0, 0, 0),
       ),
