@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:app_base_orienteering/Managers/DownloadManager.dart';
 import 'package:app_base_orienteering/Screens/Classes/ClassRanking.dart';
+import 'package:app_base_orienteering/Screens/Clubs/clubsRanking.dart';
 import 'package:flutter/material.dart';
 
 class ClubsRoute extends StatefulWidget {
@@ -55,7 +56,8 @@ class _ClubsRouteState extends State<ClubsRoute> {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => Text('Ranking'),
+                                builder: (context) => ClubsRanking(
+                                    widget.raceid, downloadedClasses[index]),
                               ),
                             );
                           },
