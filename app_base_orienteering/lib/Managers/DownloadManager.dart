@@ -12,9 +12,14 @@ class DownloadManager {
   ///Gets the shared instance of the DownloadManager
   static DownloadManager get getShared => _shared;
 
+  ///Determines is data is being downloaded
+  bool isLoading = false;
+
   ///Fetches all the races
   Future<List<Map<String, dynamic>>> fetchRaces() async {
+    isLoading = true;
     final response = await http.get(Uri.parse("$apiUrl/list_races"));
+    isLoading = false;
 
     if (response.statusCode == 200) {
       return List<Map<String, dynamic>>.from(jsonDecode(response.body));
@@ -28,8 +33,10 @@ class DownloadManager {
     FavoritesManager favoritesManager = FavoritesManager.getShared;
     String favorites = favoritesManager.getArrayOfFavoriteRaces();
 
+    isLoading = true;
     final response = await http
         .get(Uri.parse("$apiUrl/ranking_from_id_race?race_id=$favorites"));
+    isLoading = false;
 
     if (response.statusCode == 200) {
       return List<Map<String, dynamic>>.from(jsonDecode(response.body));
@@ -65,8 +72,11 @@ class DownloadManager {
   ///Fetches all the rankings ralative to a class
   Future<List<dynamic>> fetchRankings(
       String raceid, String displayedClass) async {
+    isLoading = true;
     final response = await http.get(
-        Uri.parse('$apiUrl/results?race_id=$raceid&className=$displayedClass'));
+      Uri.parse('$apiUrl/results?race_id=$raceid&className=$displayedClass'),
+    );
+    isLoading = false;
 
     if (response.statusCode == 200) {
       return List<dynamic>.from(jsonDecode(response.body));
@@ -78,8 +88,10 @@ class DownloadManager {
   ///Fetches all the rankings ralative to a club
   Future<List<dynamic>> fetchRankingsForClub(
       String raceid, String displayedClub) async {
+    isLoading = true;
     final response = await http.get(Uri.parse(
         '$apiUrl/get_rank_by_club?race_id=$raceid&club=$displayedClub'));
+    isLoading = false;
 
     if (response.statusCode == 200) {
       return List<dynamic>.from(jsonDecode(response.body));

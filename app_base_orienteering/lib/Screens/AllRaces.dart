@@ -49,6 +49,10 @@ class _AllRacesState extends State<AllRaces> {
               return const CircularProgressIndicator();
             }
 
+            if (downloadManager.isLoading) {
+              return const CircularProgressIndicator();
+            }
+
             var races = snapshot.data!; //force unwrapping after a check
 
             return ListView.builder(

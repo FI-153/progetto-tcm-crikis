@@ -49,20 +49,28 @@ class _ClassRankingState extends State<ClassRanking> {
           child: FutureBuilder<List<dynamic>>(
             future: futureClassRanks,
             builder: (context, snapshot) {
-              if (snapshot.hasData) {
-                List<dynamic> downloadedRanks = snapshot.data!;
-
-                return ListView.builder(
-                  itemCount: downloadedRanks.length,
-                  itemBuilder: ((context, index) => RankCell(
-                        downloadedRanks[index]['position'],
-                        downloadedRanks[index]['name'],
-                        downloadedRanks[index]['surname'],
-                      )),
-                );
-              } else if (snapshot.hasError) {
+              if (snapshot.hasError) {
                 return Text('${snapshot.error}');
               }
+
+              if (!snapshot.hasData) {
+                return const CircularProgressIndicator();
+              }
+
+              if (downloadManager.isLoading) {
+                return const CircularProgressIndicator();
+              }
+
+              List<dynamic> downloadedRanks = snapshot.data!;
+
+              return ListView.builder(
+                itemCount: downloadedRanks.length,
+                itemBuilder: ((context, index) => RankCell(
+                      downloadedRanks[index]['position'],
+                      downloadedRanks[index]['name'],
+                      downloadedRanks[index]['surname'],
+                    )),
+              );
 
               // By default, show a loading spinner.
               return const CircularProgressIndicator();

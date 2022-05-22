@@ -49,6 +49,10 @@ class _FavoriteRacesState extends State<FavoriteRaces> {
               return const CircularProgressIndicator();
             }
 
+            if (downloadManager.isLoading) {
+              return const CircularProgressIndicator();
+            }
+
             var races = snapshot.data!; //force unwrapping after a check
 
             return ListView.builder(

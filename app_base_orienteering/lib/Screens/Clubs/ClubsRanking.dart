@@ -14,6 +14,7 @@ class ClubsRanking extends StatefulWidget {
 
 class _ClubsRankingState extends State<ClubsRanking> {
   late Future<List<dynamic>> futureClubRanks;
+  var downloadManager = DownloadManager.getShared;
 
   @override
   void initState() {
@@ -22,7 +23,6 @@ class _ClubsRankingState extends State<ClubsRanking> {
   }
 
   void fetchRankingForClub(String raceid, String displayedClub) async {
-    var downloadManager = DownloadManager.getShared;
     futureClubRanks =
         downloadManager.fetchRankingsForClub(raceid, displayedClub);
   }
@@ -54,6 +54,10 @@ class _ClubsRankingState extends State<ClubsRanking> {
               }
 
               if (!snapshot.hasData) {
+                return const CircularProgressIndicator();
+              }
+
+              if (downloadManager.isLoading) {
                 return const CircularProgressIndicator();
               }
 
