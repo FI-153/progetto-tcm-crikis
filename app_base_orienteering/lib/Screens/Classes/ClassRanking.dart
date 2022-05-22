@@ -31,7 +31,7 @@ class _ClassRankingState extends State<ClassRanking> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.displayedClass),
+        title: Text('${widget.displayedClass}, Rankings'),
       ),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () {

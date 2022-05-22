@@ -31,7 +31,7 @@ class _ClubsRankingState extends State<ClubsRanking> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.displayedClub),
+        title: Text("${widget.displayedClub}, Rankings"),
       ),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () {
