@@ -3,6 +3,7 @@ import 'package:app_base_orienteering/Managers/DownloadManager.dart';
 import 'package:app_base_orienteering/Screens/Clubs/clubsRanking.dart';
 import 'package:app_base_orienteering/Views/EmptyView.dart';
 import 'package:flutter/material.dart';
+import '../../Views/LoadingView.dart';
 
 class ClubsRoute extends StatefulWidget {
   final String raceid;
@@ -45,7 +46,7 @@ class _ClubsRouteState extends State<ClubsRoute> {
               }
 
               if (!snapshot.hasData) {
-                return const CircularProgressIndicator();
+                return const LoadingView();
               }
 
               List<String> downloadedClasses = snapshot.data!;
@@ -79,7 +80,7 @@ class _ClubsRouteState extends State<ClubsRoute> {
               );
 
               // By default, show a loading spinner.
-              return const CircularProgressIndicator();
+              return const LoadingView();
             },
           ),
         ),

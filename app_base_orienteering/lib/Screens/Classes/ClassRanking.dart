@@ -2,6 +2,7 @@ import 'package:app_base_orienteering/Views/RankCell.dart';
 import 'package:flutter/material.dart';
 import '../../Managers/DownloadManager.dart';
 import '../../Views/EmptyView.dart';
+import '../../Views/LoadingView.dart';
 
 class ClassRanking extends StatefulWidget {
   const ClassRanking(this.raceid, this.displayedClass, {Key? key})
@@ -55,11 +56,11 @@ class _ClassRankingState extends State<ClassRanking> {
               }
 
               if (!snapshot.hasData) {
-                return const CircularProgressIndicator();
+                return const LoadingView();
               }
 
               if (downloadManager.isLoading) {
-                return const CircularProgressIndicator();
+                return const LoadingView();
               }
 
               List<dynamic> downloadedRanks = snapshot.data!;
@@ -77,7 +78,7 @@ class _ClassRankingState extends State<ClassRanking> {
               );
 
               // By default, show a loading spinner.
-              return const CircularProgressIndicator();
+              return const LoadingView();
             },
           ),
         ),

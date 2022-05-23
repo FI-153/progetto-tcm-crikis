@@ -1,3 +1,4 @@
+import 'package:app_base_orienteering/Views/LoadingView.dart';
 import 'package:app_base_orienteering/Views/StartingListCell.dart';
 import 'package:flutter/material.dart';
 import '../Managers/DownloadManager.dart';
@@ -45,11 +46,11 @@ class _StartingListState extends State<StartingList> {
               }
 
               if (!snapshot.hasData) {
-                return const CircularProgressIndicator();
+                return const LoadingView();
               }
 
               if (downloadManager.isLoading) {
-                return const CircularProgressIndicator();
+                return const LoadingView();
               }
 
               List<dynamic> downloadedRanks = snapshot.data!;

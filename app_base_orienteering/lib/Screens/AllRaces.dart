@@ -8,6 +8,7 @@ import 'package:focused_menu/modals.dart';
 import 'Classes/ClassesRoute.dart';
 import 'package:focused_menu/focused_menu.dart';
 import '../Utilities/costum_icons_icons.dart';
+import '../Views/LoadingView.dart';
 
 class AllRaces extends StatefulWidget {
   AllRaces({Key? key}) : super(key: key);
@@ -47,11 +48,11 @@ class _AllRacesState extends State<AllRaces> {
             }
 
             if (!snapshot.hasData) {
-              return const CircularProgressIndicator();
+              return const LoadingView();
             }
 
             if (downloadManager.isLoading) {
-              return const CircularProgressIndicator();
+              return const LoadingView();
             }
 
             var races = snapshot.data!; //force unwrapping after a check

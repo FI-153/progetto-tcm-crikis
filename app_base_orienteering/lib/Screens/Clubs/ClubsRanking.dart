@@ -2,6 +2,7 @@ import 'package:app_base_orienteering/Views/EmptyView.dart';
 import 'package:app_base_orienteering/Views/RankCell.dart';
 import 'package:flutter/material.dart';
 import '../../Managers/DownloadManager.dart';
+import '../../Views/LoadingView.dart';
 
 class ClubsRanking extends StatefulWidget {
   const ClubsRanking(this.raceid, this.displayedClub, {Key? key})
@@ -55,11 +56,11 @@ class _ClubsRankingState extends State<ClubsRanking> {
               }
 
               if (!snapshot.hasData) {
-                return const CircularProgressIndicator();
+                return const LoadingView();
               }
 
               if (downloadManager.isLoading) {
-                return const CircularProgressIndicator();
+                return const LoadingView();
               }
 
               List<dynamic> downloadedRanks = snapshot.data!;

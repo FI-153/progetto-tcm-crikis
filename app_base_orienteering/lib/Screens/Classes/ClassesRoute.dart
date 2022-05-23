@@ -3,6 +3,7 @@ import 'package:app_base_orienteering/Managers/DownloadManager.dart';
 import 'package:app_base_orienteering/Screens/Classes/ClassRanking.dart';
 import 'package:flutter/material.dart';
 import '../../Views/EmptyView.dart';
+import '../../Views/LoadingView.dart';
 
 class ClassesRoute extends StatefulWidget {
   final String raceid;
@@ -45,7 +46,7 @@ class _ClassesRouteState extends State<ClassesRoute> {
               }
 
               if (!snapshot.hasData) {
-                return const CircularProgressIndicator();
+                return const LoadingView();
               }
 
               List<String> downloadedClasses = snapshot.data!;
