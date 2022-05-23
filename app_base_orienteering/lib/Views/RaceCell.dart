@@ -1,3 +1,4 @@
+import 'package:app_base_orienteering/Utilities/costum_icons_icons.dart';
 import 'package:flutter/material.dart';
 import '../Managers/FavoritesManager.dart';
 
@@ -48,8 +49,8 @@ class _RaceCellState extends State<RaceCell> {
                       changeFavoriteStatus(widget.raceId);
                     },
                     icon: getIcon(),
-                    color: Colors.amber,
-                    iconSize: 45,
+                    color: Colors.redAccent,
+                    iconSize: 30,
                   ),
                 ],
               ),
@@ -63,8 +64,8 @@ class _RaceCellState extends State<RaceCell> {
 
   Icon getIcon() {
     return _favoritesManager.isFavorite(widget.raceId)
-        ? const Icon(Icons.star)
-        : const Icon(Icons.star_border);
+        ? const Icon(CostumIcons.heart)
+        : const Icon(CostumIcons.heart_empty);
   }
 
   void changeFavoriteStatus(String raceId) {

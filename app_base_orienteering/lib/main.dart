@@ -1,5 +1,6 @@
 import 'package:app_base_orienteering/Screens/AllRaces.dart';
 import 'package:app_base_orienteering/Screens/FavoriteRaces.dart';
+import 'package:app_base_orienteering/Utilities/costum_icons_icons.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -49,7 +50,7 @@ class _MyAppState extends State<MyApp> {
           BottomNavigationBarItem(
               icon: Icon(Icons.list), label: 'Available Races'),
           BottomNavigationBarItem(
-              icon: Icon(Icons.star), label: 'Favorite Races'),
+              icon: Icon(CostumIcons.heart), label: 'Favorite Races'),
         ],
         currentIndex: _selectedIndex,
         onTap: _onItemTapped,
