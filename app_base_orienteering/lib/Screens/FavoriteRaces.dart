@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:app_base_orienteering/Managers/DownloadManager.dart';
 import 'package:app_base_orienteering/Screens/Clubs/ClubsRoute.dart';
+import 'package:app_base_orienteering/Views/EmptyFavoriteView.dart';
 import 'package:app_base_orienteering/Views/RaceCell.dart';
 import 'package:flutter/material.dart';
 import 'package:focused_menu/modals.dart';
@@ -55,7 +56,7 @@ class _FavoriteRacesState extends State<FavoriteRaces> {
 
             var races = snapshot.data!; //force unwrapping after a check
             if (races.isEmpty) {
-              return Text("No favorites yet");
+              return const EmptyFavoriteView();
             }
 
             return ListView.builder(
