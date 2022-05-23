@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:app_base_orienteering/Managers/DownloadManager.dart';
 import 'package:app_base_orienteering/Screens/Clubs/ClubsRoute.dart';
+import 'package:app_base_orienteering/Screens/StartingList.dart';
 import 'package:app_base_orienteering/Views/RaceCell.dart';
 import 'package:flutter/material.dart';
 import 'package:focused_menu/modals.dart';
@@ -81,7 +82,16 @@ class _AllRacesState extends State<AllRaces> {
                             goToClubs(context, races, index);
                           },
                         ),
-                        showStartingList(),
+                        FocusedMenuItem(
+                          title: const Text(
+                            "Show Starting List",
+                            style: TextStyle(fontWeight: FontWeight.w600),
+                          ),
+                          trailingIcon: const Icon(CostumIcons.flag),
+                          onPressed: () {
+                            goToStartingList(context, races, index);
+                          },
+                        ),
                       ],
                       child: RaceCell(
                         races[index]["race_name"],
@@ -116,19 +126,12 @@ class _AllRacesState extends State<AllRaces> {
     );
   }
 
-  FocusedMenuItem showStartingList() {
-    return FocusedMenuItem(
-      title: const Text(
-        "Show Starting List",
-        style: TextStyle(fontWeight: FontWeight.w600),
-      ),
-      trailingIcon: const Icon(CostumIcons.flag),
-      onPressed: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => const Text('Starting')),
-        );
-      },
+  void goToStartingList(
+      BuildContext context, List<Map<String, dynamic>> races, int index) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+          builder: (context) => StartingList(races[index]["race_id"])),
     );
   }
 
