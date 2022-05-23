@@ -1,3 +1,4 @@
+import 'package:app_base_orienteering/Views/EmptyView.dart';
 import 'package:app_base_orienteering/Views/RankCell.dart';
 import 'package:flutter/material.dart';
 import '../../Managers/DownloadManager.dart';
@@ -63,7 +64,7 @@ class _ClubsRankingState extends State<ClubsRanking> {
 
               List<dynamic> downloadedRanks = snapshot.data!;
               if (downloadedRanks.isEmpty) {
-                return Text('No data yet');
+                return EmptyView('Maybe the rankings are in yet?');
               }
 
               return ListView.builder(

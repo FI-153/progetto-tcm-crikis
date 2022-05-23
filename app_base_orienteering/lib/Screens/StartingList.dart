@@ -1,6 +1,7 @@
 import 'package:app_base_orienteering/Views/StartingListCell.dart';
 import 'package:flutter/material.dart';
 import '../Managers/DownloadManager.dart';
+import '../Views/EmptyView.dart';
 
 class StartingList extends StatefulWidget {
   const StartingList(this.raceid, {Key? key}) : super(key: key);
@@ -53,7 +54,7 @@ class _StartingListState extends State<StartingList> {
 
               List<dynamic> downloadedRanks = snapshot.data!;
               if (downloadedRanks.isEmpty) {
-                return const Text('No data yet');
+                return EmptyView('Maybe this race has not been added yet?');
               }
 
               return ListView.builder(

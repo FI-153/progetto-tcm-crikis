@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'package:app_base_orienteering/Managers/DownloadManager.dart';
-import 'package:app_base_orienteering/Screens/Classes/ClassRanking.dart';
 import 'package:app_base_orienteering/Screens/Clubs/clubsRanking.dart';
+import 'package:app_base_orienteering/Views/EmptyView.dart';
 import 'package:flutter/material.dart';
 
 class ClubsRoute extends StatefulWidget {
@@ -50,7 +50,7 @@ class _ClubsRouteState extends State<ClubsRoute> {
 
               List<String> downloadedClasses = snapshot.data!;
               if (downloadedClasses.isEmpty) {
-                return Text('No data yet');
+                return EmptyView('Maybe this race has not been added yet?');
               }
 
               return ListView.builder(

@@ -1,6 +1,7 @@
 import 'package:app_base_orienteering/Views/RankCell.dart';
 import 'package:flutter/material.dart';
 import '../../Managers/DownloadManager.dart';
+import '../../Views/EmptyView.dart';
 
 class ClassRanking extends StatefulWidget {
   const ClassRanking(this.raceid, this.displayedClass, {Key? key})
@@ -63,7 +64,7 @@ class _ClassRankingState extends State<ClassRanking> {
 
               List<dynamic> downloadedRanks = snapshot.data!;
               if (downloadedRanks.isEmpty) {
-                return Text('No data yet');
+                return EmptyView('Maybe the results are not in yet?');
               }
 
               return ListView.builder(
