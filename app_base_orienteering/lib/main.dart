@@ -22,7 +22,7 @@ void main() {
             surface: Colors.white,
             onSurface: Colors.white),
       ),
-      home: MyApp(),
+      home: const MyApp(),
     ),
   );
 }

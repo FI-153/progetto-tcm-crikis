@@ -11,6 +11,7 @@ import 'Classes/ClassesRoute.dart';
 import 'package:focused_menu/focused_menu.dart';
 import '../Utilities/costum_icons_icons.dart';
 import '../Views/LoadingView.dart';
+import '../Screens/StartingList.dart';
 
 class FavoriteRaces extends StatefulWidget {
   const FavoriteRaces({Key? key}) : super(key: key);
@@ -39,7 +40,7 @@ class _FavoriteRacesState extends State<FavoriteRaces> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Favorite Races'),
+        title: const Text('Available Races'),
       ),
       body: Center(
         child: FutureBuilder<List<Map<String, dynamic>>>(
@@ -58,6 +59,7 @@ class _FavoriteRacesState extends State<FavoriteRaces> {
             }
 
             var races = snapshot.data!; //force unwrapping after a check
+
             if (races.isEmpty) {
               return const EmptyFavoriteView();
             }
@@ -88,7 +90,16 @@ class _FavoriteRacesState extends State<FavoriteRaces> {
                             goToClubs(context, races, index);
                           },
                         ),
-                        showStartingList(),
+                        FocusedMenuItem(
+                          title: const Text(
+                            "Show Starting List",
+                            style: TextStyle(fontWeight: FontWeight.w600),
+                          ),
+                          trailingIcon: const Icon(CostumIcons.flag),
+                          onPressed: () {
+                            goToStartingList(context, races, index);
+                          },
+                        ),
                       ],
                       child: RaceCell(
                         races[index]["race_name"],
@@ -123,19 +134,12 @@ class _FavoriteRacesState extends State<FavoriteRaces> {
     );
   }
 
-  FocusedMenuItem showStartingList() {
-    return FocusedMenuItem(
-      title: const Text(
-        "Show Starting List",
-        style: TextStyle(fontWeight: FontWeight.w600),
-      ),
-      trailingIcon: const Icon(CostumIcons.flag),
-      onPressed: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => const Text('Starting')),
-        );
-      },
+  void goToStartingList(
+      BuildContext context, List<Map<String, dynamic>> races, int index) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+          builder: (context) => StartingList(races[index]["race_id"])),
     );
   }
 

@@ -115,7 +115,7 @@ class _AllRacesState extends State<AllRaces> {
         },
         label: const Text('Refresh Races'),
         icon: const Icon(Icons.replay),
-        backgroundColor: Color.fromARGB(255, 154, 213, 186),
+        backgroundColor: const Color.fromARGB(255, 154, 213, 186),
       ),
     );
   }
