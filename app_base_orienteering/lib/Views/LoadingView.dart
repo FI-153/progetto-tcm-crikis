@@ -14,7 +14,7 @@ class LoadingView extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Lottie.asset('assets/90534-spinner.json',
+            Lottie.asset('assets/lf30_editor_1ofhptov.json',
                 repeat: true,
                 width: MediaQuery.of(context).size.width * 0.40,
                 fit: BoxFit.fill),

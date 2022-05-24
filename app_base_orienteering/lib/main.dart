@@ -6,8 +6,22 @@ import 'package:flutter/material.dart';
 
 void main() {
   runApp(
-    const MaterialApp(
+    MaterialApp(
       title: 'Ori Live Results',
+      theme: ThemeData(
+        colorScheme: const ColorScheme(
+            brightness: Brightness.light,
+            primary: Color.fromARGB(255, 154, 213, 186),
+            onPrimary: Color.fromARGB(255, 45, 45, 45),
+            secondary: Color.fromARGB(255, 154, 213, 186),
+            onSecondary: Color.fromARGB(255, 45, 45, 45),
+            error: Colors.red,
+            onError: Color.fromARGB(255, 45, 45, 45),
+            background: Colors.white,
+            onBackground: Colors.white,
+            surface: Colors.white,
+            onSurface: Colors.white),
+      ),
       home: MyApp(),
     ),
   );
