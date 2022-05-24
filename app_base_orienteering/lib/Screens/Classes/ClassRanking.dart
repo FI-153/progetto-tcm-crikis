@@ -45,7 +45,7 @@ class _ClassRankingState extends State<ClassRanking> {
         },
         label: const Text('Refresh Ranking'),
         icon: const Icon(Icons.replay),
-        backgroundColor: Colors.blueAccent,
+        backgroundColor: const Color.fromARGB(255, 154, 213, 186),
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),

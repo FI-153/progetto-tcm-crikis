@@ -109,7 +109,7 @@ class _FavoriteRacesState extends State<FavoriteRaces> {
         },
         label: const Text('Refresh Races'),
         icon: const Icon(Icons.replay),
-        backgroundColor: Colors.blueAccent,
+        backgroundColor: const Color.fromARGB(255, 154, 213, 186),
       ),
     );
   }
