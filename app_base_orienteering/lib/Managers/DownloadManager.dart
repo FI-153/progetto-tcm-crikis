@@ -1,6 +1,6 @@
 // ignore_for_file: file_names
 
-import 'package:app_base_orienteering/Managers/FavoritesManager.dart';
+import 'package:Orienteering/Managers/FavoritesManager.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import '../Utilities/globals.dart';

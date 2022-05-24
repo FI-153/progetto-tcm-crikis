@@ -1,13 +1,13 @@
 // ignore_for_file: library_private_types_in_public_api
-import 'package:app_base_orienteering/Screens/AllRaces.dart';
-import 'package:app_base_orienteering/Screens/FavoriteRaces.dart';
-import 'package:app_base_orienteering/Utilities/costum_icons_icons.dart';
+import 'package:Orienteering/Screens/AllRaces.dart';
+import 'package:Orienteering/Screens/FavoriteRaces.dart';
+import 'package:Orienteering/Utilities/costum_icons_icons.dart';
 import 'package:flutter/material.dart';
 
 void main() {
   runApp(
     MaterialApp(
-      title: 'Ori Live Results',
+      title: 'Orienteering',
       theme: ThemeData(
         colorScheme: const ColorScheme(
             brightness: Brightness.light,

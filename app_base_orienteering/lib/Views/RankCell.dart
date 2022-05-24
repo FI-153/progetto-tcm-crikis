@@ -1,6 +1,6 @@
 // ignore_for_file: file_names
 
-import 'package:app_base_orienteering/Utilities/costum_icons_icons.dart';
+import 'package:Orienteering/Utilities/costum_icons_icons.dart';
 import 'package:flutter/material.dart';
 
 class RankCell extends StatefulWidget {

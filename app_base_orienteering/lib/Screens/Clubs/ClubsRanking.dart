@@ -1,7 +1,7 @@
 // ignore_for_file: file_names
 
-import 'package:app_base_orienteering/Views/EmptyView.dart';
-import 'package:app_base_orienteering/Views/RankCell.dart';
+import 'package:Orienteering/Views/EmptyView.dart';
+import 'package:Orienteering/Views/RankCell.dart';
 import 'package:flutter/material.dart';
 import '../../Managers/DownloadManager.dart';
 import '../../Views/LoadingView.dart';

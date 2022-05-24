@@ -1,8 +1,8 @@
 // ignore_for_file: file_names, library_private_types_in_public_api
 
 import 'dart:async';
-import 'package:app_base_orienteering/Managers/DownloadManager.dart';
-import 'package:app_base_orienteering/Screens/Classes/ClassRanking.dart';
+import 'package:Orienteering/Managers/DownloadManager.dart';
+import 'package:Orienteering/Screens/Classes/ClassRanking.dart';
 import 'package:flutter/material.dart';
 import '../../Views/EmptyView.dart';
 import '../../Views/LoadingView.dart';

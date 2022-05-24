@@ -1,10 +1,10 @@
 // ignore_for_file: file_names, library_private_types_in_public_api
 
 import 'dart:async';
-import 'package:app_base_orienteering/Managers/DownloadManager.dart';
-import 'package:app_base_orienteering/Screens/Clubs/ClubsRoute.dart';
-import 'package:app_base_orienteering/Screens/StartingList.dart';
-import 'package:app_base_orienteering/Views/RaceCell.dart';
+import 'package:Orienteering/Managers/DownloadManager.dart';
+import 'package:Orienteering/Screens/Clubs/ClubsRoute.dart';
+import 'package:Orienteering/Screens/StartingList.dart';
+import 'package:Orienteering/Views/RaceCell.dart';
 import 'package:flutter/material.dart';
 import 'package:focused_menu/modals.dart';
 import 'Classes/ClassesRoute.dart';
