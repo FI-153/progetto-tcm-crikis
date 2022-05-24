@@ -1,4 +1,7 @@
+// ignore_for_file: file_names
+
 import 'package:flutter_test/flutter_test.dart';
+// ignore: avoid_relative_lib_imports
 import '../lib/Managers/FavoritesManager.dart';
 
 void main() {

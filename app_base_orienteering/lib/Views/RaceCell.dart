@@ -1,12 +1,14 @@
+// ignore_for_file: file_names
+
 import 'package:app_base_orienteering/Utilities/costum_icons_icons.dart';
 import 'package:flutter/material.dart';
 import '../Managers/FavoritesManager.dart';
 
 class RaceCell extends StatefulWidget {
-  String raceName;
-  String raceDate;
-  String raceId;
-  RaceCell(this.raceName, this.raceDate, this.raceId, {Key? key})
+  final String raceName;
+  final String raceDate;
+  final String raceId;
+  const RaceCell(this.raceName, this.raceDate, this.raceId, {Key? key})
       : super(key: key);
 
   @override

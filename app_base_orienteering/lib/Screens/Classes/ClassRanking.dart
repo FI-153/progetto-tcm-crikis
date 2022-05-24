@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'package:app_base_orienteering/Views/RankCell.dart';
 import 'package:flutter/material.dart';
 import '../../Managers/DownloadManager.dart';
@@ -65,7 +67,7 @@ class _ClassRankingState extends State<ClassRanking> {
 
               List<dynamic> downloadedRanks = snapshot.data!;
               if (downloadedRanks.isEmpty) {
-                return EmptyView('Maybe the results are not in yet?');
+                return const EmptyView('Maybe the results are not in yet?');
               }
 
               return ListView.builder(
@@ -76,9 +78,6 @@ class _ClassRankingState extends State<ClassRanking> {
                       downloadedRanks[index]['surname'],
                     )),
               );
-
-              // By default, show a loading spinner.
-              return const LoadingView();
             },
           ),
         ),

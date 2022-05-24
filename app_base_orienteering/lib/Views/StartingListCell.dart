@@ -1,11 +1,12 @@
-import 'dart:ffi';
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
 
 class StartingListCell extends StatefulWidget {
-  String startingTime;
-  String name;
-  String surname;
-  StartingListCell(this.startingTime, this.name, this.surname, {Key? key})
+  final String startingTime;
+  final String name;
+  final String surname;
+  const StartingListCell(this.startingTime, this.name, this.surname, {Key? key})
       : super(key: key);
 
   @override

@@ -1,3 +1,4 @@
+// ignore_for_file: library_private_types_in_public_api
 import 'package:app_base_orienteering/Screens/AllRaces.dart';
 import 'package:app_base_orienteering/Screens/FavoriteRaces.dart';
 import 'package:app_base_orienteering/Utilities/costum_icons_icons.dart';
@@ -22,8 +23,8 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   ///Contains a list of all the top-level pages
   List<Widget> pages = [
-    AllRaces(),
-    FavoriteRaces(),
+    const AllRaces(),
+    const FavoriteRaces(),
   ];
 
   ///Current selected index

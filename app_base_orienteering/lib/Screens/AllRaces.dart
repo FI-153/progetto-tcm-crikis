@@ -1,3 +1,5 @@
+// ignore_for_file: file_names, library_private_types_in_public_api
+
 import 'dart:async';
 import 'package:app_base_orienteering/Managers/DownloadManager.dart';
 import 'package:app_base_orienteering/Screens/Clubs/ClubsRoute.dart';
@@ -11,7 +13,7 @@ import '../Utilities/costum_icons_icons.dart';
 import '../Views/LoadingView.dart';
 
 class AllRaces extends StatefulWidget {
-  AllRaces({Key? key}) : super(key: key);
+  const AllRaces({Key? key}) : super(key: key);
 
   @override
   _AllRacesState createState() => _AllRacesState();

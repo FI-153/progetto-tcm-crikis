@@ -1,9 +1,11 @@
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
 class EmptyView extends StatelessWidget {
-  EmptyView(this.message, {Key? key}) : super(key: key);
-  String message;
+  const EmptyView(this.message, {Key? key}) : super(key: key);
+  final String message;
 
   @override
   Widget build(BuildContext context) {

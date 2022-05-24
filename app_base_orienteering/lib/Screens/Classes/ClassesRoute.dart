@@ -1,3 +1,5 @@
+// ignore_for_file: file_names, library_private_types_in_public_api
+
 import 'dart:async';
 import 'package:app_base_orienteering/Managers/DownloadManager.dart';
 import 'package:app_base_orienteering/Screens/Classes/ClassRanking.dart';
@@ -51,7 +53,8 @@ class _ClassesRouteState extends State<ClassesRoute> {
 
               List<String> downloadedClasses = snapshot.data!;
               if (downloadedClasses.isEmpty) {
-                return EmptyView('Maybe this race has not been added yet?');
+                return const EmptyView(
+                    'Maybe this race has not been added yet?');
               }
 
               return ListView.builder(

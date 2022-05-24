@@ -1,13 +1,13 @@
-import 'dart:ffi';
+// ignore_for_file: file_names
 
 import 'package:app_base_orienteering/Utilities/costum_icons_icons.dart';
 import 'package:flutter/material.dart';
 
 class RankCell extends StatefulWidget {
-  String position;
-  String name;
-  String surname;
-  RankCell(this.position, this.name, this.surname, {Key? key})
+  final String position;
+  final String name;
+  final String surname;
+  const RankCell(this.position, this.name, this.surname, {Key? key})
       : super(key: key);
 
   @override

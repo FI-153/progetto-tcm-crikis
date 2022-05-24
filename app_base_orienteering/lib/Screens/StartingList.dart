@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'package:app_base_orienteering/Views/LoadingView.dart';
 import 'package:app_base_orienteering/Views/StartingListCell.dart';
 import 'package:flutter/material.dart';
@@ -55,7 +57,8 @@ class _StartingListState extends State<StartingList> {
 
               List<dynamic> downloadedRanks = snapshot.data!;
               if (downloadedRanks.isEmpty) {
-                return EmptyView('Maybe this race has not been added yet?');
+                return const EmptyView(
+                    'Maybe this race has not been added yet?');
               }
 
               return ListView.builder(
