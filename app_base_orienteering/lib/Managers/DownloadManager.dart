@@ -71,7 +71,8 @@ class DownloadManager {
 
   ///Fetches the starting list ralative to a race
   Future<List<dynamic>> fetchStartingList(String raceid) async {
-    final response = await http.get(Uri.parse('$apiUrl/___?race_id=$raceid'));
+    final response =
+        await http.get(Uri.parse('$apiUrl/get_start_time?race_id=$raceid'));
 
     if (response.statusCode == 200) {
       return List<dynamic>.from(jsonDecode(response.body));

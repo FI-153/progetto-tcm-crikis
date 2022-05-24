@@ -61,7 +61,7 @@ class _StartingListState extends State<StartingList> {
               return ListView.builder(
                 itemCount: downloadedRanks.length,
                 itemBuilder: ((context, index) => StartingListCell(
-                      downloadedRanks[index]['startingList'],
+                      downloadedRanks[index]['startTime'],
                       downloadedRanks[index]['name'],
                       downloadedRanks[index]['surname'],
                     )),
