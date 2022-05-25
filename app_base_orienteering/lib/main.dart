@@ -8,6 +8,7 @@ void main() {
   runApp(
     MaterialApp(
       title: 'Orienteering',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         colorScheme: const ColorScheme(
             brightness: Brightness.light,
