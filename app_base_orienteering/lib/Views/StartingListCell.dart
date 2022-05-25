@@ -1,5 +1,6 @@
 // ignore_for_file: file_names
 
+import 'package:Orienteering/Utilities/custumTheming.dart';
 import 'package:flutter/material.dart';
 
 class StartingListCell extends StatefulWidget {
@@ -52,7 +53,7 @@ class PaleDivider extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Divider(
-      color: Color.fromARGB(127, 0, 0, 0),
+      color: black_pale,
     );
   }
 }
@@ -91,7 +92,7 @@ class AthleteStartingTime extends StatelessWidget {
       style: const TextStyle(
         fontSize: 17,
         fontStyle: FontStyle.italic,
-        color: Color.fromARGB(128, 0, 0, 0),
+        color: black_pale,
       ),
     );
   }
@@ -112,7 +113,6 @@ class AthleteNameAndSurname extends StatelessWidget {
       style: const TextStyle(
         fontSize: 20,
         fontWeight: FontWeight.w500,
-        color: Colors.black,
       ),
     );
   }

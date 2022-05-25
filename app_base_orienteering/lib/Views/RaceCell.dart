@@ -1,6 +1,7 @@
 // ignore_for_file: file_names
 
 import 'package:Orienteering/Utilities/costum_icons_icons.dart';
+import 'package:Orienteering/Utilities/custumTheming.dart';
 import 'package:flutter/material.dart';
 import '../Managers/FavoritesManager.dart';
 
@@ -51,7 +52,7 @@ class _RaceCellState extends State<RaceCell> {
                       changeFavoriteStatus(widget.raceId);
                     },
                     icon: getIcon(),
-                    color: Colors.redAccent,
+                    color: orienteeringRed,
                     iconSize: 30,
                   ),
                 ],
@@ -89,7 +90,7 @@ class InvisibleDivider extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Divider(
-      color: Color.fromARGB(0, 0, 0, 0),
+      color: clear,
     );
   }
 }
@@ -109,7 +110,7 @@ class RaceDate extends StatelessWidget {
       style: const TextStyle(
         fontSize: 17,
         fontStyle: FontStyle.italic,
-        color: Color.fromARGB(128, 0, 0, 0),
+        color: orienteeringText_secondary,
       ),
     );
   }

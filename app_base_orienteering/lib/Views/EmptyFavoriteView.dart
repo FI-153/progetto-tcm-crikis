@@ -1,5 +1,6 @@
 // ignore_for_file: file_names
 
+import 'package:Orienteering/Utilities/custumTheming.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
@@ -27,7 +28,7 @@ class EmptyFavoriteView extends StatelessWidget {
               style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.w600,
-                  color: Colors.redAccent),
+                  color: orienteeringRed),
               textAlign: TextAlign.center,
             ),
           ],

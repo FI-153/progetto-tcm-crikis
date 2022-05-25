@@ -3,26 +3,14 @@ import 'package:Orienteering/Screens/AllRaces.dart';
 import 'package:Orienteering/Screens/FavoriteRaces.dart';
 import 'package:Orienteering/Utilities/costum_icons_icons.dart';
 import 'package:flutter/material.dart';
+import './Utilities/custumTheming.dart';
 
 void main() {
   runApp(
     MaterialApp(
       title: 'Orienteering',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        colorScheme: const ColorScheme(
-            brightness: Brightness.light,
-            primary: Color.fromARGB(255, 154, 213, 186),
-            onPrimary: Color.fromARGB(255, 45, 45, 45),
-            secondary: Color.fromARGB(255, 154, 213, 186),
-            onSecondary: Color.fromARGB(255, 45, 45, 45),
-            error: Colors.red,
-            onError: Color.fromARGB(255, 45, 45, 45),
-            background: Colors.white,
-            onBackground: Colors.white,
-            surface: Colors.white,
-            onSurface: Colors.white),
-      ),
+      theme: orienteeringTheme,
       home: const MyApp(),
     ),
   );

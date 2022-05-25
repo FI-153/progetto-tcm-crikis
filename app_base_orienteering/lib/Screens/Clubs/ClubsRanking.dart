@@ -1,5 +1,6 @@
 // ignore_for_file: file_names
 
+import 'package:Orienteering/Utilities/custumTheming.dart';
 import 'package:Orienteering/Views/EmptyView.dart';
 import 'package:Orienteering/Views/RankCell.dart';
 import 'package:flutter/material.dart';
@@ -45,7 +46,7 @@ class _ClubsRankingState extends State<ClubsRanking> {
         },
         label: const Text('Refresh Ranking'),
         icon: const Icon(Icons.replay),
-        backgroundColor: const Color.fromARGB(255, 154, 213, 186),
+        backgroundColor: orienteeringGreen,
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),

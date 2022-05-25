@@ -3,6 +3,7 @@
 import 'dart:async';
 import 'package:Orienteering/Managers/DownloadManager.dart';
 import 'package:Orienteering/Screens/Clubs/ClubsRoute.dart';
+import 'package:Orienteering/Utilities/custumTheming.dart';
 import 'package:Orienteering/Views/EmptyFavoriteView.dart';
 import 'package:Orienteering/Views/RaceCell.dart';
 import 'package:flutter/material.dart';
@@ -73,8 +74,7 @@ class _FavoriteRacesState extends State<FavoriteRaces> {
                       duration: const Duration(milliseconds: 100),
                       menuWidth: MediaQuery.of(context).size.width * 0.75,
                       menuOffset: 8,
-                      blurBackgroundColor:
-                          const Color.fromRGBO(204, 204, 204, 0.1),
+                      blurBackgroundColor: bgColorWhenPopupIsShown,
                       blurSize: 2,
                       onPressed: () {
                         goToRaceClasses(context, races, index);
@@ -120,7 +120,7 @@ class _FavoriteRacesState extends State<FavoriteRaces> {
         },
         label: const Text('Refresh Races'),
         icon: const Icon(Icons.replay),
-        backgroundColor: const Color.fromARGB(255, 154, 213, 186),
+        backgroundColor: orienteeringGreen,
       ),
     );
   }
