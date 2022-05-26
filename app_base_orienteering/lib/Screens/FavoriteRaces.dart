@@ -41,7 +41,7 @@ class _FavoriteRacesState extends State<FavoriteRaces> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Available Races'),
+        title: const Text('Favorite Races'),
       ),
       body: Center(
         child: FutureBuilder<List<Map<String, dynamic>>>(

@@ -35,6 +35,10 @@ class DownloadManager {
     FavoritesManager favoritesManager = FavoritesManager.getShared;
     String favorites = favoritesManager.getArrayOfFavoriteRaces();
 
+    if (favorites.isEmpty) {
+      return [];
+    }
+
     isLoading = true;
     final response = await http
         .get(Uri.parse("$apiUrl/ranking_from_id_race?race_id=$favorites"));
